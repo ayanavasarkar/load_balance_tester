@@ -7,7 +7,7 @@ HTTP Load Tester is a Python tool for load testing and benchmarking HTTP endpoin
 - Simulate concurrent HTTP requests at a specified rate (QPS)
 - Support for various HTTP methods: GET, POST, PUT, DELETE
 - Customizable request headers and payloads
-- Reporting of latencies and error rates
+- Reporting of latencies (averages, percentiles, standard deviation) and error rates
 - Support for response time thresholds
 - Logging of request details to a text file
 - Docker containerization for easy deployment
