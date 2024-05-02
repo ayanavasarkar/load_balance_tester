@@ -24,8 +24,8 @@ pip install -r requirements.txt
 3. **Run the Load Tester:**
 Example Usage:
 
-python load_tester.py http://example.com --qps 10 --method GET
-Replace `http://example.com` with the URL you want to test. Adjust other parameters such as QPS and method as needed.
+python load_tester.py --url http://example.com --qps 10 --method GET --timeout 2 --max_requests 10 --logging True
+
 
 ## How to Build the Docker Image
 

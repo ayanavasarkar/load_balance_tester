@@ -169,7 +169,7 @@ def main():
     parser.add_argument("--method", default="GET", choices=["GET", "POST", "PUT", "DELETE"], help="HTTP method to use")
     parser.add_argument("--headers", nargs='*', help="Custom headers as key-value pairs separated by space")
     parser.add_argument("--payload", help="Request payload")
-    parser.add_argument("--logging", default=False, help="Logging Enabled/Disabled")
+    parser.add_argument("--logging", default=True, help="Logging Enabled/Disabled")
     parser.add_argument("--percentiles", nargs='+', default=[90], type=list, 
                         help="Percentiles for latency reporting as a list of percentile values, e.g., [10, 90]")
     parser.add_argument("--response_thres", nargs='+', default=[0.25, 0.5], type=list, 
