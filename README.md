@@ -15,8 +15,8 @@ HTTP Load Tester is a Python tool for load testing and benchmarking HTTP endpoin
 ## How to Use
 
 1. **Clone the Repository:**
-git clone https://github.com/yourusername/http-load-tester.git
-cd http-load-tester
+git clone https://github.com/ayanavasarkar/load_balance_tester.git
+cd load_balance_tester
 
 2. **Install Dependencies:**
 pip install -r requirements.txt
@@ -30,10 +30,10 @@ python load_tester.py --url http://example.com --qps 10 --method GET --timeout 2
 ## How to Build the Docker Image
 
 1. **Build the Docker Image:**
-docker build -t http-load-tester .
+docker build -t load_balance_tester .
 
 2. **Run the Load Tester Inside Docker:**
-docker run http-load-tester http://example.com --qps 10 --method GET
+docker run load_balance_tester http://example.com --qps 10 --method GET
 
 Replace `http://example.com` with the URL you want to test. Adjust other parameters as needed.
 

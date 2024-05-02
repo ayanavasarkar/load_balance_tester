@@ -1,3 +1,16 @@
+# Features
+# Custom HTTP methods: Allowing users to specify HTTP methods other than GET.
+# Headers and Payloads: Support for custom headers and request payloads.
+# Concurrency control: Allowing users to specify the number of concurrent requests.
+# Timeouts: Setting a timeout for each request.
+# Logging: Logging request/response details.
+# Output formats: Supporting different formats for the report, such as JSON or CSV.
+# Custom reporting: More detailed reporting options, like percentiles for latency.
+# Response Time Thresholds: Introduce the ability to define response time thresholds and
+# report on the percentage of requests that meet or exceed these thresholds.
+# Timeout per Request: Currently, there's a global timeout for requests. 
+# You could add an option to specify a timeout for each individual request.
+
 import argparse, time
 import requests, math, threading
 import numpy as np
@@ -184,16 +197,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# Custom HTTP methods: Allowing users to specify HTTP methods other than GET.
-# Headers and Payloads: Support for custom headers and request payloads.
-# Concurrency control: Allowing users to specify the number of concurrent requests.
-# Timeouts: Setting a timeout for each request.
-# Logging: Logging request/response details.
-# Output formats: Supporting different formats for the report, such as JSON or CSV.
-# Custom reporting: More detailed reporting options, like percentiles for latency.
-# Response Time Thresholds: Introduce the ability to define response time thresholds and
-# report on the percentage of requests that meet or exceed these thresholds.
-# Timeout per Request: Currently, there's a global timeout for requests. 
-# You could add an option to specify a timeout for each individual request.
