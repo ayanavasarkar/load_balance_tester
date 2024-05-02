@@ -1,4 +1,5 @@
 # Features
+##########################
 # Custom HTTP methods: Allowing users to specify HTTP methods other than GET.
 # Headers and Payloads: Support for custom headers and request payloads.
 # Concurrency control: Allowing users to specify the number of concurrent requests.
