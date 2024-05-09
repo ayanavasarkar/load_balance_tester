@@ -74,6 +74,7 @@ class LoadTester:
             self.latencies.append(latency)
             if response.status_code != 200:
                 self.errors += 1
+
         except Exception as e:
             print("Error:", e)
             latency = time.time() - start_time
@@ -81,8 +82,8 @@ class LoadTester:
 
         self.request_count += 1  # Increment request count
 
-        if self.log_enabled:
-            self.log_request(start_time, latency, response.status_code)
+        # if self.log_enabled:
+        #     self.log_request(start_time, latency)
         
     def run(self) -> None:
         """
@@ -90,20 +91,20 @@ class LoadTester:
         """
         # Define the Progress Bar
         progress_bar = tqdm(total=self.max_requests, desc="Testing")
-        
-        # Run each for a request till the Maximum Request Capacity
+
+        # # Run each for a request till the Maximum Request Capacity
         while self.request_count < self.max_requests:
-            threading.Thread(target=self.request).start()
-            time.sleep(1 / self.qps)
-            progress_bar.update(1)
+            for i in range (self.qps):
+                threading.Thread(target=self.request).start()
+                progress_bar.update(1)
         progress_bar.close()
 
-    def log_request(self, start_time, latency, status_code) -> None:
+    def log_request(self, start_time, latency) -> None:
         """
         Log the Results from each request
         """
         with open(self.log_file, 'a') as f:
-            f.write(f"Timestamp: {start_time}, Latency: {latency} seconds, Status Code: {status_code}\n")
+            f.write(f"Timestamp: {start_time}, Latency: {latency} seconds\n")
 
     def report(self) -> None:
         """
@@ -111,7 +112,8 @@ class LoadTester:
         """
         print("Total Requests:", len(self.latencies))
         print("Total Errors:", self.errors)
-        self.log_report()
+        if self.log_enabled:
+            self.log_report()
 
     def log_report(self) -> None:
         """
@@ -177,8 +179,8 @@ class LoadTester:
 def main():
     parser = argparse.ArgumentParser(description="HTTP Load Tester")
     parser.add_argument("--url", default="https://lu.ma/6jrcq4ow", help="URL to test")
-    parser.add_argument("--qps", type=float, default=1, help="Requests per second")
-    parser.add_argument("--timeout", type=float, default=5.0, help="Requests per second")
+    parser.add_argument("--qps", type=float, default=5, help="Requests per second")
+    parser.add_argument("--timeout", type=float, default=5.0, help="Kill request before timeout")
     parser.add_argument("--max_requests", type=int, default=10, help="Maximum Number of Requests")
     parser.add_argument("--method", default="GET", choices=["GET", "POST", "PUT", "DELETE"], help="HTTP method to use")
     parser.add_argument("--headers", nargs='*', help="Custom headers as key-value pairs separated by space")
